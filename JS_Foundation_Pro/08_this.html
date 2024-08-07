@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>Explain "this"</h2>
+    <p>
+        The “this” keyword refers to the object that is currently executing the function. Its value depends on the context in which the function is called. In the global context (such as in a browser), this refers to the window object.
+    </p>
+
+    <button id="btn1">Button1</button>
+    <button id="btn2">Button2</button>
+
+
+    <script>
+        function getThis(){
+            console.log(this)
+        }
+        getThis(); //window
+
+        const obj = {
+            getThis
+        }
+        obj.getThis(); // { getThis: fn }
+
+        const getArrowThis = () => {
+            console.log(this) //window
+        }
+
+        obj2 = {
+            getArrowThis
+        }
+        obj2.getArrowThis(); // window
+
+
+    </script>
+
+    <script>
+        let button = document.querySelector("#btn1");
+        let button2 = document.querySelector("#btn2");
+
+
+        button.addEventListener('click', function(){
+            console.log(this) // <button> Button 1 </button>
+        })
+
+        button2.addEventListener('click', () => {
+            console.log(this) // window
+        })
+
+
+    </script>
+    
+</body>
+</html>
