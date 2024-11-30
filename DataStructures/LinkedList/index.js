@@ -112,6 +112,11 @@ LinkedList.prototype.deleteByKey = function (key) {
     return;
   }
 
+  if(this.head.data === key) {
+    this.head = this.head.next;
+    return
+  }
+
   let current = this.head;
 
   while (current.next !== null) {
